@@ -1,0 +1,42 @@
+yarivyar,matatan
+313197857,208346320
+
+1. We've chosen the first paradigm to proceed with, as it helps encapsulate the code better. 
+receiving all the objects in the game allows strategies to become more complex as they
+ receive all other objects in the game.
+Another advantage is that strategies are less dependent on BrickerGameManager and its
+ methods, they are independent on the methods and changes of it.
+A big disadvantage is that in order to add another strategy, game object you have to have
+ the knowledge of using the danoGameLab library.
+using the second method completely diminish the usage of game objects collection which
+ allows easier modification to the code and expansion.
+2. We've created two classes, one for the numerical display of lives and one for the graphical display.
+both classes use the heartCounter from brickerGameManager in order to update, create the
+ amount of lives the player currently has.
+Classes are autonomous, meaning are only created at brickerGameManager class and the onward
+ updating occurs inside each one of the classes.
+It suffices the encapsulation paradigm allowing for each class to update itself without being
+ dependent on other classes.
+3. Firstly we've created a strategy and a class  for each of the special effects. 
+The strategies hold the effect details, for example, Puck strategy creates 2 puck balls and thus
+ Puck class only creates the ball itself and its behavior inside the game.
+The heart pickup effect has a strategy which dictates it speed and direction and the class only dictates
+ with what it should collide and the effect of a collision.
+The extra paddle effect has a strategy which dictates it size and amount of collisions until it disappears,
+ The class counts the amounts of collisions and deletes 
+the object upon reaching the allowed number of collisions.
+Lastly the change camera effect, the strategy holds the amount of hits until the camera resets and it
+ checks if the camera isnt already changed.
+4. We've made the double effect using an abstract strategy.
+the abstract strategy holds another strategy inside it which allows for all the strategies in section two
+ to hold another strategy inside them.
+Firstly we have sent the basic strategy to all the bricks which destroys the brick on collision.
+The decision of the special effects is made inside a factory which decides randomly between one of
+ the effects.
+if a double effect has been chosen, then it sends a strategy inside a strategy for doubling the effect 
+and holding them both.
+5. We haven't changed the API in section 1 but only modified some of the functions. 
+such as the function update in class Paddle, to not allow the paddle to move outside the borders of
+ the window.
+We added methods inside BrickerGameManager in order to apply order and cleanliness to the code.
+
